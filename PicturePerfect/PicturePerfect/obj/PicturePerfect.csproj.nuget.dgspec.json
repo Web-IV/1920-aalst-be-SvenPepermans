@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\svenp\\source\\repos\\Web-IV\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj": {}
+    "C:\\Users\\svenp\\Documents\\GitHub\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj": {}
   },
   "projects": {
-    "C:\\Users\\svenp\\source\\repos\\Web-IV\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj": {
+    "C:\\Users\\svenp\\Documents\\GitHub\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\svenp\\source\\repos\\Web-IV\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj",
+        "projectUniqueName": "C:\\Users\\svenp\\Documents\\GitHub\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj",
         "projectName": "PicturePerfect",
-        "projectPath": "C:\\Users\\svenp\\source\\repos\\Web-IV\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj",
+        "projectPath": "C:\\Users\\svenp\\Documents\\GitHub\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\PicturePerfect.csproj",
         "packagesPath": "C:\\Users\\svenp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\svenp\\source\\repos\\Web-IV\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\obj\\",
+        "outputPath": "C:\\Users\\svenp\\Documents\\GitHub\\1920-aalst-be-SvenPepermans\\PicturePerfect\\PicturePerfect\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[13.2.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
