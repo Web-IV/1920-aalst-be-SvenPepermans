@@ -5,7 +5,14 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.Models
 {
-    interface IPostRepository
+    public interface IPostRepository
     {
+        IEnumerable<Post> GetAll();
+        Post GetBy(int id);
+        IEnumerable<Post> GetByDate(DateTime date);
+        void Add(Post post);
+        void Update(Post post);
+        void Delete(Post post);
+        void SaveChanges();
     }
 }

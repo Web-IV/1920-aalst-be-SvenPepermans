@@ -5,7 +5,15 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.Models
 {
-    public class Categorie
+    public enum Categorie
     {
+        Sport,
+        Familie,
+        Natuur,
+        Winter,
+        Zomer,
+        Herfst,
+        Lente
+        
     }
 }
