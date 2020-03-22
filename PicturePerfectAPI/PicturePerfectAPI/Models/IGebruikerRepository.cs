@@ -5,7 +5,14 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.Models
 {
-    public class IGebruikerRepository
+    public interface IGebruikerRepository
     {
+        IEnumerable<Gebruiker> GetAll();
+        Gebruiker GetById(int id);
+        Gebruiker GetByUserName(string gebruikersNaam);
+        void Add(Gebruiker gebruiker);
+        void Update(Gebruiker gebruiker);
+        void Delete(Gebruiker gebruiker);
+        void SaveChanges();
     }
 }
