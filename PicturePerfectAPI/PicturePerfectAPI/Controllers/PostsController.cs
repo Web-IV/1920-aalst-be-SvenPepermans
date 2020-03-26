@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PicturePerfectAPI.DTOs;
 using PicturePerfectAPI.Models;
 
 namespace PicturePerfectAPI.Controllers
@@ -41,13 +42,16 @@ namespace PicturePerfectAPI.Controllers
 
         // POST: api/Posts
         [HttpPost]
-        public ActionResult<Post> PostPost(Post post)
+        public ActionResult<Post> PostPost(PostDTO post)
         {
-            _postRepository.Add(post);
+            Post postToCreate = new Post() { Beschrijving = post.Beschrijving };
+            foreach (var f in post.Fotos)
+                postToCreate.AddFoto(new Foto(f.Url, f.Naam));
+            _postRepository.Add(postToCreate);
             _postRepository.SaveChanges();
 
             return CreatedAtAction(nameof(GetPost),
-                new { id = post.PostId }, post);
+                new { id = postToCreate.PostId }, postToCreate);
         }
 
         // PUT: api/Posts/<id>

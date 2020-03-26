@@ -13,9 +13,9 @@ namespace PicturePerfectAPI.Models
         public string Beschrijving { get; set; }
         public DateTime DatePosted { get; set; }
         [Required]
-        public ICollection<Foto> Fotos { get; private set; }
+        public ICollection<Foto> Fotos { get; set; }
         [Required]
-        public ICollection<Categorie> Categories { get; private set; }
+        public ICollection<Categorie> Categories { get; set; }
         public int Likes { get; set; }
 
         public Post(string beschrijving)
