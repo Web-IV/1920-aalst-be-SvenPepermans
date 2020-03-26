@@ -24,14 +24,16 @@ namespace PicturePerfectAPI.Models
             Fotos = new List<Foto>();
             Categories = new List<Categorie>();
             Likes = 0;
+            Beschrijving = beschrijving;
         }
+        public Post() { }
 
-        public void FotoToevoegen(Foto foto)
+        public void AddFoto(Foto foto)
         {
             Fotos.Add(foto);
         }
 
-        public void CategorieToevoegen(Categorie cat)
+        public void AddCategorie(Categorie cat)
         {
             Categories.Add(cat);
         }

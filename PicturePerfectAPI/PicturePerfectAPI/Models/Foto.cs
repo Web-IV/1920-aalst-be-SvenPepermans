@@ -12,14 +12,11 @@ namespace PicturePerfectAPI.Models
         [Required]
         public string Url { get; set; }
         [Required]
-        public Post Post { get; set; }
-        [Required]
         public string Naam { get; set; }
 
-        public Foto(string url, Post post, string naam)
+        public Foto(string url, string naam)
         {
             Url = url;
-            Post = post;
             Naam = naam;
         }
     }
