@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,9 +9,12 @@ namespace PicturePerfectAPI.Models
     public class Post
     {
         public int PostId { get; set; }
+        [Required]
         public string Beschrijving { get; set; }
         public DateTime DatePosted { get; set; }
+        [Required]
         public ICollection<Foto> Fotos { get; private set; }
+        [Required]
         public ICollection<Categorie> Categories { get; private set; }
         public int Likes { get; set; }
 

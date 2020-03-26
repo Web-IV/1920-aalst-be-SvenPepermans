@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+PicturePerfectAPI/.vs/PicturePerfectAPI/v16/.suo
+*.ide
+*.ide-wal
+*.ide-shm
+*.dll
+*.pdb

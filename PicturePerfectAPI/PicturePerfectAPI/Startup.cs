@@ -27,6 +27,13 @@ namespace PicturePerfectAPI
         {
             services.AddControllers();
             services.AddSwaggerDocument();
+            services.AddOpenApiDocument(c =>
+           {
+               c.DocumentName = "apidocs";
+               c.Title = "PicturePerfect API";
+               c.Version = "v1";
+               c.Description = "The PicturePerfect API documentation description.";
+           });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
