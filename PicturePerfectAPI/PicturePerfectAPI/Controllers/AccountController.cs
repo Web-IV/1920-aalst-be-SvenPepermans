@@ -18,6 +18,7 @@ namespace PicturePerfectAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     public class AccountController : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager;
