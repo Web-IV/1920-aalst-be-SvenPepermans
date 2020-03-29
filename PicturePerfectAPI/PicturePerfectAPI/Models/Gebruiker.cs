@@ -14,13 +14,11 @@ namespace PicturePerfectAPI.Models
         public string Achternaam { get; set; }
         public ICollection<Post> Posts { get; private set; }
 
-        public Gebruiker(string gebruikersnaam, string email, string voornaam, string achternaam)
+        public Gebruiker()
         {
-            Gebruikersnaam = gebruikersnaam;
-            Voornaam = voornaam;
-            Achternaam = achternaam;
+          
             Posts = new List<Post>();
-            Email = email;
+          
         }
     }
 }

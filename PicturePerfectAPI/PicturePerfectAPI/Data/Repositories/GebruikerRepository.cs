@@ -22,20 +22,6 @@ namespace PicturePerfectAPI.Data.Repositories
             _gebruikers.Add(gebruiker);
         }
 
-        public void Delete(Gebruiker gebruiker)
-        {
-            _gebruikers.Remove(gebruiker);
-        }
-
-        public IEnumerable<Gebruiker> GetAll()
-        {
-            return _gebruikers.ToList();
-        }
-
-        public Gebruiker GetById(int id)
-        {
-            return _gebruikers.SingleOrDefault(g => g.GebruikersId == id);
-        }
 
         public Gebruiker GetByUserName(string gebruikersNaam)
         {
@@ -47,10 +33,7 @@ namespace PicturePerfectAPI.Data.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Gebruiker gebruiker)
-        {
-            _context.Update(gebruiker);
-        }
+     
     }
 }
 
