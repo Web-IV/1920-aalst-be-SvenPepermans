@@ -54,7 +54,38 @@ namespace PicturePerfectAPI.Controllers
             return BadRequest();
         }
 
-        private String GetToken(IdentityUser user)
+        /// <summary>
+        /// Nieuwe gebruiker registreren
+        /// </summary>
+        /// <param name="model">the user details</param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<ActionResult<String>> Register(RegisterDTO model)
+        {
+            IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            Gebruiker gebruiker = new Gebruiker { Email = model.Email, Voornaam = model.Voornaam, Achternaam = model.Achternaam, Gebruikersnaam = model.Gebruikersnaam };
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                _gebruikerRepository.Add(gebruiker);
+                _gebruikerRepository.SaveChanges();
+                string token = GetToken(user);
+                return Created("", token);
+            }
+            return BadRequest();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("checkusername")]
+        public async Task<ActionResult<bool>> CheckAvailableUserName(string email)
+        {
+            var user = await _userManager.FindByNameAsync(email);
+            return user == null;
+        }
+
+            private String GetToken(IdentityUser user)
         {
             // Create the token
             var claims = new[]
