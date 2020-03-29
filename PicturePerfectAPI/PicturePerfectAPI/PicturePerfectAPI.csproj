@@ -13,4 +13,6 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.2.5" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

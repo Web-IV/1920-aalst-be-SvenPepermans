@@ -61,7 +61,7 @@ namespace PicturePerfectAPI
                     Type = OpenApiSecuritySchemeType.ApiKey,
                     Name = "Authorization",
                     In = OpenApiSecurityApiKeyLocation.Header,
-                    Description = "Type intro the textbox: Bearer {your JWT token}."
+                    Description = "Type into the textbox: Bearer {your JWT token}."
                 });
 
                 c.OperationProcessors.Add(
