@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace PicturePerfectAPI
 {
@@ -36,6 +38,16 @@ namespace PicturePerfectAPI
                c.Title = "PicturePerfect API";
                c.Version = "v1";
                c.Description = "The PicturePerfect API documentation description.";
+               c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+               {
+                   Type = OpenApiSecuritySchemeType.ApiKey,
+                   Name = "Authorization",
+                   In = OpenApiSecurityApiKeyLocation.Header,
+                   Description = "Type intro the textbox: Bearer {your JWT token}."
+               });
+
+               c.OperationProcessors.Add(
+                   new AspNetCoreOperationSecurityScopeProcessor("JWT"));
            });
             services.AddCors(options =>
                    options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
