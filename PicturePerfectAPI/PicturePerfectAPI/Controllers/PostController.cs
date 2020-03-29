@@ -16,12 +16,14 @@ namespace PicturePerfectAPI.Controllers
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
-    public class PostsController : ControllerBase
+    public class PostController : ControllerBase
     {
         private readonly IPostRepository _postRepository;
-        public PostsController(IPostRepository context)
+        private readonly IGebruikerRepository _gebruikerRepository;
+        public PostController(IPostRepository context, IGebruikerRepository gebruikerRepository)
         {
             _postRepository = context;
+            _gebruikerRepository = gebruikerRepository;
         }
 
         // GET: api/Posts
@@ -41,6 +43,17 @@ namespace PicturePerfectAPI.Controllers
                 return NotFound();
             }
             return post;
+        }
+
+
+        /// <summary>
+        /// Get favorite recipes of current user
+        /// </summary>
+        [HttpGet("Posts")]
+        public IEnumerable<Post> GetPostsCurrentUser()
+        {
+            Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
+            return gebruiker.Posts;
         }
 
         // POST: api/Posts

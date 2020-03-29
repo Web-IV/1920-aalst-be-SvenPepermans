@@ -23,9 +23,9 @@ namespace PicturePerfectAPI.Data.Repositories
         }
 
 
-        public Gebruiker GetByUserName(string gebruikersNaam)
+        public Gebruiker GetBy(string email)
         {
-            return _gebruikers.SingleOrDefault(g => g.Gebruikersnaam == gebruikersNaam);
+            return _gebruikers.Include(g => g.Posts).ThenInclude(g => g.Fotos).SingleOrDefault(c => c.Email == email);
         }
 
         public void SaveChanges()

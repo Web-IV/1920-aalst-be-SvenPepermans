@@ -32,25 +32,6 @@ namespace PicturePerfectAPI
         {
             services.AddControllers();
             services.AddSwaggerDocument();
-            services.AddOpenApiDocument(c =>
-           {
-               c.DocumentName = "apidocs";
-               c.Title = "PicturePerfect API";
-               c.Version = "v1";
-               c.Description = "The PicturePerfect API documentation description.";
-               c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
-               {
-                   Type = OpenApiSecuritySchemeType.ApiKey,
-                   Name = "Authorization",
-                   In = OpenApiSecurityApiKeyLocation.Header,
-                   Description = "Type intro the textbox: Bearer {your JWT token}."
-               });
-
-               c.OperationProcessors.Add(
-                   new AspNetCoreOperationSecurityScopeProcessor("JWT"));
-           });
-            services.AddCors(options =>
-                   options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,12 +44,31 @@ namespace PicturePerfectAPI
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(Configuration["Tokens::Key"])),
+                            Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         RequireExpirationTime = true
                     };
-                }); 
+                });
+            services.AddOpenApiDocument(c =>
+            {
+                c.DocumentName = "apidocs";
+                c.Title = "PicturePerfect API";
+                c.Version = "v1";
+                c.Description = "The PicturePerfect API documentation description.";
+                c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type intro the textbox: Bearer {your JWT token}."
+                });
+
+                c.OperationProcessors.Add(
+                    new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+            });
+            services.AddCors(options =>
+                 options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
         }
 
 

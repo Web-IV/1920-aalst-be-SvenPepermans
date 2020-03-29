@@ -7,7 +7,7 @@ namespace PicturePerfectAPI.Models
 {
     public interface IGebruikerRepository
     {
-        Gebruiker GetByUserName(string gebruikersNaam);
+        Gebruiker GetBy(string email );
         void Add(Gebruiker gebruiker);
         void SaveChanges();
     }
