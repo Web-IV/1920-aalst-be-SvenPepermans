@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PicturePerfectAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.Data
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext
     {
         public DbSet<Gebruiker> Gebruikers { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -41,7 +42,18 @@ namespace PicturePerfectAPI.Data
 
             builder.Entity<Categorie>().Property(c => c.CategorieNaam).IsRequired().HasMaxLength(25);
 
-           
+            builder.Entity<Post>().HasData(
+                new { PostId = 1, Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, CategorieId = 1}
+                );
+            builder.Entity<Categorie>().HasData(
+
+                new {CategorieId = 1, CategorieNaam = "Sport" },
+                new {CategorieId = 2, CategorieNaam = "Lente"}
+                );
+            builder.Entity<Foto>().HasData(
+                new { FotoId = 1, Naam = "fiets.jpeg", PostId = 1},
+                new { FotoId = 2, Naam = "lenteboom.jpeg" }
+                );
             
             
 

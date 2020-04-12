@@ -28,49 +28,21 @@ namespace PicturePerfectAPI.Data
                 //Gebruikers
 
                 var sven = new Gebruiker { Voornaam = "Sven", Achternaam = "Pepermans", Gebruikersnaam = "SvenP", Email = "svenp@gmail.com" };
+                _dbContext.Gebruikers.Add(sven);
+                await CreateUser(sven.Email, "Sv3n123!");
                 var fleur = new Gebruiker { Voornaam = "Fleur", Achternaam = "Schietecat", Gebruikersnaam = "Bloempje", Email = "fleur@gmail.com" };
-                await CreateUser(sven.Gebruikersnaam, sven.Email, "svenzijnwachtwoord");
-                await CreateUser(fleur.Gebruikersnaam, fleur.Email, "fleurhaarwachtwoord");
-                var gebruikers = new[] { sven, fleur };
-                _dbContext.Gebruikers.AddRange(gebruikers);
+                _dbContext.Gebruikers.Add(fleur);
+                await CreateUser(fleur.Email, "Fl3ur123!");             
                 _dbContext.SaveChanges();
 
-
-
-                //fotos
-                var fotoFietsen = new Foto("fietsen.jpeg");
-                var fotoFietsen2 = new Foto("demuur.jpeg");
-                var fotoWinterPret = new Foto("sneeuw.jpeg");
-                var fotos = new[] { fotoFietsen, fotoFietsen2, fotoWinterPret };
-                _dbContext.Fotos.AddRange(fotos);
-                _dbContext.SaveChanges();
-
-                //categories
-                var sport = new Categorie("Sport");
-                var lente = new Categorie("Lente");
-                var winter = new Categorie("Winter");
-                var familie = new Categorie("Familie");
-                var categories = new[] { sport, lente, winter, familie };
-                _dbContext.Categories.AddRange(categories);
-                _dbContext.SaveChanges();
-
-                //posts
-                var fietsen = new Post("De muur van Geraardsbergen overwonnen, op naar Mont Ventoux!", sport);
-                fietsen.AddFoto(fotoFietsen);
-                fietsen.AddFoto(fotoFietsen2);         
-                var sneeuwpret = new Post("Wat een mooie winter is het geweest.", winter);
-                sneeuwpret.AddFoto(fotoWinterPret);
-                var posts = new[] { fietsen, sneeuwpret };
-                _dbContext.Posts.AddRange(posts);
-                _dbContext.SaveChanges();
 
 
 
             }
             }
-            private async Task CreateUser(string username, string email, string password)
+            private async Task CreateUser(string email, string password)
             {
-                var user = new IdentityUser { UserName = username, Email = email };
+                var user = new IdentityUser { UserName = email, Email = email };
                 await _userManager.CreateAsync(user, password);
             }
         

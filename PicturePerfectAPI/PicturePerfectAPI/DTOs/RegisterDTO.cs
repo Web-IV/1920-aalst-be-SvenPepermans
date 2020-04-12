@@ -13,6 +13,10 @@ namespace PicturePerfectAPI.DTOs
         public String Gebruikersnaam { get; set; }
 
         [Required]
+        [EmailAddress]
+        public String Email { get; set; }
+
+        [Required]
         [StringLength(50)]
         public String Voornaam { get; set; }
 

@@ -44,7 +44,7 @@ namespace PicturePerfectAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)
         {
-            var user = await _userManager.FindByNameAsync(model.Email);
+            var user = await _userManager.FindByNameAsync(model.Gebruikersnaam);
 
             if (user != null)
             {
@@ -68,7 +68,7 @@ namespace PicturePerfectAPI.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
         {
-            IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            IdentityUser user = new IdentityUser { UserName = model.Gebruikersnaam, Email = model.Email };
             Gebruiker gebruiker = new Gebruiker { Email = model.Email, Voornaam = model.Voornaam, Achternaam = model.Achternaam, Gebruikersnaam = model.Gebruikersnaam };
             var result = await _userManager.CreateAsync(user, model.Password);
 
