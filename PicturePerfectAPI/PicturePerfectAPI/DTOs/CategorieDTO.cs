@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.DTOs
 {
-    public class FotoDTO
+    public class CategorieDTO
     {
         [Required]
-        public string Naam { get; set; }
-
-      //  [Required]
-    //    public string Url { get; set; }
-
+        public string CategorieNaam { get; set; }
     }
 }

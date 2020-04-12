@@ -10,14 +10,14 @@ namespace PicturePerfectAPI.Models
     {
         public int FotoId { get; set; }
         
-        public string Url { get; set; }
+       // public string Url { get; set; }
        
         public string Naam { get; set; }
 
 
-        public Foto(string url, string naam)
+        public Foto(string naam)
         {
-            Url = url;
+            //Url = url;
             Naam = naam;
         }
     }

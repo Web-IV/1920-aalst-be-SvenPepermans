@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 
 namespace PicturePerfectAPI.Models
 {
-    public enum Categorie
+    public class Categorie
     {
-        Sport,
-        Familie,
-        Natuur,
-        Winter,
-        Zomer,
-        Herfst,
-        Lente
+        public int CategorieId { get; set; }
+        public string CategorieNaam { get; set; }
+
+        public Categorie(string naam)
+        {
+            CategorieNaam = naam;
+        }
         
+        public Categorie() { }
     }
 }

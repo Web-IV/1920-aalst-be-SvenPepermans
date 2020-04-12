@@ -15,14 +15,14 @@ namespace PicturePerfectAPI.Models
         [Required]
         public ICollection<Foto> Fotos { get; set; }
         [Required]
-        public ICollection<Categorie> Categories { get; set; }
+        public Categorie Categorie { get; set; }
         public int Likes { get; set; }
 
-        public Post(string beschrijving)
+        public Post(string beschrijving, Categorie categorie)
         {
             DatePosted = DateTime.Now;
             Fotos = new List<Foto>();
-            Categories = new List<Categorie>();
+            Categorie = categorie;
             Likes = 0;
             Beschrijving = beschrijving;
         }
@@ -31,11 +31,6 @@ namespace PicturePerfectAPI.Models
         public void AddFoto(Foto foto)
         {
             Fotos.Add(foto);
-        }
-
-        public void AddCategorie(Categorie cat)
-        {
-            Categories.Add(cat);
         }
     }
 }

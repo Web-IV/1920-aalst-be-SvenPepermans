@@ -76,7 +76,7 @@ namespace PicturePerfectAPI.Controllers
         {
             Post postToCreate = new Post() { Beschrijving = post.Beschrijving };
             foreach (var f in post.Fotos)
-                postToCreate.AddFoto(new Foto(f.Url, f.Naam));
+                postToCreate.AddFoto(new Foto(f.Naam));
             _postRepository.Add(postToCreate);
             _postRepository.SaveChanges();
 

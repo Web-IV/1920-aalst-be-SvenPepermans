@@ -21,5 +21,7 @@ namespace PicturePerfectAPI.Models
             Posts = new List<Post>();
           
         }
+
+      
     }
 }

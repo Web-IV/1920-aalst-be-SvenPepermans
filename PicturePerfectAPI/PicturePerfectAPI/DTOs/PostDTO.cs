@@ -14,5 +14,8 @@ namespace PicturePerfectAPI.DTOs
 
         [Required]
         public IList<FotoDTO> Fotos { get; set; }
+
+        [Required]
+        public CategorieDTO Categorie { get; set; }
     }
 }
