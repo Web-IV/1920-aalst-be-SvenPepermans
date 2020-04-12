@@ -25,6 +25,10 @@ namespace PicturePerfectAPI.Controllers
             _gebruikerRepository = gebruikerRepository;
         }
 
+        /// <summary>
+        /// Get the gebruiker
+        /// </summary>
+        /// <returns>The gebruiker</returns>
         [HttpGet()]
         public ActionResult<GebruikerDTO> GetGebruiker()
         {

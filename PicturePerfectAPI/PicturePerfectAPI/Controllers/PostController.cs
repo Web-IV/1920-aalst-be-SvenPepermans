@@ -27,6 +27,10 @@ namespace PicturePerfectAPI.Controllers
         }
 
         // GET: api/Posts
+        /// <summary>
+        /// Get all posts ordered by date
+        /// </summary>
+        /// <returns>Array of posts ordered by date</returns>
         [HttpGet]
         public IEnumerable<Post> GetPosts()
         {
@@ -34,6 +38,11 @@ namespace PicturePerfectAPI.Controllers
         }
 
         // Get: api/Posts/<id>
+        /// <summary>
+        /// Get the post with given id
+        /// </summary>
+        /// <param name="id"> The id of the post that we want to see</param>
+        /// <returns>The post</returns>
         [HttpGet("{id}")]
         public ActionResult<Post> GetPost(int id)
         {
@@ -46,9 +55,10 @@ namespace PicturePerfectAPI.Controllers
         }
 
 
-        /// <summary>
-        /// Get favorite recipes of current user
-        /// </summary>
+       /// <summary>
+       /// Gets all the posts of the currently logged in user
+       /// </summary>
+       /// <returns>All the posts of the current user</returns>
         [HttpGet("Posts")]
         public IEnumerable<Post> GetPostsCurrentUser()
         {
@@ -56,7 +66,11 @@ namespace PicturePerfectAPI.Controllers
             return gebruiker.Posts;
         }
 
-        // POST: api/Posts
+        /// <summary>
+        /// Adds new post
+        /// </summary>
+        /// <param name="post">The newly created post</param>
+        
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
@@ -71,6 +85,12 @@ namespace PicturePerfectAPI.Controllers
         }
 
         // PUT: api/Posts/<id>
+        /// <summary>
+        /// Updates a post with new information
+        /// </summary>
+        /// <param name="id">Id of post to be updated</param>
+        /// <param name="post">The updated post</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult PutPost(int id, Post post)
         {
@@ -83,7 +103,11 @@ namespace PicturePerfectAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Posts/<id>
+        /// <summary>
+        /// Deletes the post with given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The deleted post if exists</returns>
         [HttpDelete("{id}")]
         public ActionResult<Post> DeletePost(int id)
         {

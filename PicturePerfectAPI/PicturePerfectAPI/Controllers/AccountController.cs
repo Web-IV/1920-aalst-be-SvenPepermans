@@ -35,6 +35,11 @@ namespace PicturePerfectAPI.Controllers
             _config = config;
         }
 
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="model">the login details</param>
+        
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)
@@ -77,11 +82,16 @@ namespace PicturePerfectAPI.Controllers
             return BadRequest();
         }
 
+        /// <summary>
+        /// Checks if the username is available
+        /// </summary>
+        /// <param name="gebruikersnaam">Username</param>
+        /// <returns>true if username is not registered yet</returns>
         [AllowAnonymous]
         [HttpGet("checkusername")]
-        public async Task<ActionResult<bool>> CheckAvailableUserName(string email)
+        public async Task<ActionResult<bool>> CheckAvailableUserName(string gebruikersnaam)
         {
-            var user = await _userManager.FindByNameAsync(email);
+            var user = await _userManager.FindByNameAsync(gebruikersnaam);
             return user == null;
         }
 
