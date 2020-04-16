@@ -29,10 +29,10 @@ namespace PicturePerfectAPI.Data
 
                 var sven = new Gebruiker { Voornaam = "Sven", Achternaam = "Pepermans", Gebruikersnaam = "SvenP", Email = "svenp@gmail.com" };
                 _dbContext.Gebruikers.Add(sven);
-                await CreateUser(sven.Email, "Sv3n123!");
+                await CreateUser(sven.Gebruikersnaam, sven.Email, "Sv3n123!");
                 var fleur = new Gebruiker { Voornaam = "Fleur", Achternaam = "Schietecat", Gebruikersnaam = "Bloempje", Email = "fleur@gmail.com" };
                 _dbContext.Gebruikers.Add(fleur);
-                await CreateUser(fleur.Email, "Fl3ur123!");             
+                await CreateUser(fleur.Gebruikersnaam, fleur.Email, "Fl3ur123!");             
                 _dbContext.SaveChanges();
 
 
@@ -40,9 +40,9 @@ namespace PicturePerfectAPI.Data
 
             }
             }
-            private async Task CreateUser(string email, string password)
+            private async Task CreateUser(string gebruikersnaam, string email, string password)
             {
-                var user = new IdentityUser { UserName = email, Email = email };
+                var user = new IdentityUser { UserName = gebruikersnaam, Email = email };
                 await _userManager.CreateAsync(user, password);
             }
         

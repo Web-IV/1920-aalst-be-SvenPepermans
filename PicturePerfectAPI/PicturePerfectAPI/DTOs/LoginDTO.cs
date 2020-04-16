@@ -8,11 +8,11 @@ namespace PicturePerfectAPI.DTOs
 {
     public class LoginDTO
     {
-        [Required]       
+       
+        [Required]
         public string Gebruikersnaam { get; set; }
-        //[Required]
-        //[EmailAddress]
-        //public string Email { get; set; }
+      //  [EmailAddress]   
+      // public string Email { get; set; }
 
         [Required]
         public string Password { get; set; }

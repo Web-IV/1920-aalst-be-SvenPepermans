@@ -65,7 +65,7 @@ namespace PicturePerfectAPI
 
                 // User settings.
                 options.User.AllowedUserNameCharacters =
-                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._";
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@";
                 options.User.RequireUniqueEmail = true;
             });
 
@@ -88,6 +88,11 @@ namespace PicturePerfectAPI
                         RequireExpirationTime = true
                     };
                 });
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
             services.AddOpenApiDocument(c =>
             {
                 c.DocumentName = "apidocs";
