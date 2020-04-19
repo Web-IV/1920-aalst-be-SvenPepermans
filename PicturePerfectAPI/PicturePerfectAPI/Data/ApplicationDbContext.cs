@@ -57,8 +57,8 @@ namespace PicturePerfectAPI.Data
                 new {CategorieId = 2, CategorieNaam = "Lente"}
                 );
             builder.Entity<Foto>().HasData(
-                new { FotoId = 1, Naam = "fiets.jpeg", Url = "assets/Images/fiets.jpeg", PostId = 1 },
-                new { FotoId = 2, Naam = "lenteboom.jpeg", Url = "assets/Images/lenteboom.jpeg", PostId = 2 }
+                new { FotoId = 1, Naam = "fiets.jpg", Url = "assets/Images/fiets.jpg", PostId = 1 },
+                new { FotoId = 2, Naam = "lenteboom.jpg", Url = "assets/Images/lenteboom.jpg", PostId = 2 }
                 );
            
             
