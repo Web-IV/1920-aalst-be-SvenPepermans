@@ -16,11 +16,11 @@ namespace PicturePerfectAPI.Controllers
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
-    public class PostController : ControllerBase
+    public class PostsController : ControllerBase
     {
         private readonly IPostRepository _postRepository;
         private readonly IGebruikerRepository _gebruikerRepository;
-        public PostController(IPostRepository context, IGebruikerRepository gebruikerRepository)
+        public PostsController(IPostRepository context, IGebruikerRepository gebruikerRepository)
         {
             _postRepository = context;
             _gebruikerRepository = gebruikerRepository;
@@ -31,6 +31,7 @@ namespace PicturePerfectAPI.Controllers
         /// Get all posts ordered by date
         /// </summary>
         /// <returns>Array of posts ordered by date</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<Post> GetPosts()
         {

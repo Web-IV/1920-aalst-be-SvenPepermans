@@ -138,7 +138,7 @@ namespace PicturePerfectAPI
                 endpoints.MapControllers();
             });
 
-            postsDataInitializer.InitializeDataAsync().Wait();
+           postsDataInitializer.InitializeDataAsync().Wait();
         }
     }
 }

@@ -11,8 +11,8 @@ namespace PicturePerfectAPI.DTOs
         [Required]
         public string Naam { get; set; }
 
-      //  [Required]
-    //    public string Url { get; set; }
+        [Required]
+        public string Url { get; set; }
 
     }
 }

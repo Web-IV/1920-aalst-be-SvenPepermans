@@ -27,13 +27,15 @@ namespace PicturePerfectAPI.Data
 
                 //Gebruikers
 
-                var sven = new Gebruiker { Voornaam = "Sven", Achternaam = "Pepermans", Gebruikersnaam = "SvenP", Email = "svenp@gmail.com" };
+                var sven = new Gebruiker { Voornaam = "Sven", Achternaam = "Pepermans", Gebruikersnaam = "SvenP", Email = "svenp@gmail.com"};
                 _dbContext.Gebruikers.Add(sven);
                 await CreateUser(sven.Gebruikersnaam, sven.Email, "Sv3n123!");
                 var fleur = new Gebruiker { Voornaam = "Fleur", Achternaam = "Schietecat", Gebruikersnaam = "Bloempje", Email = "fleur@gmail.com" };
                 _dbContext.Gebruikers.Add(fleur);
                 await CreateUser(fleur.Gebruikersnaam, fleur.Email, "Fl3ur123!");             
                 _dbContext.SaveChanges();
+
+             
 
 
 

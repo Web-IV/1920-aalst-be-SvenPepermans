@@ -24,26 +24,32 @@ namespace PicturePerfectAPI.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
-            
+
+            builder.Entity<Post>().HasKey(p => p.PostId);
             builder.Entity<Post>().Property(p => p.Beschrijving).HasMaxLength(200).IsRequired();
             builder.Entity<Post>().Property(p => p.DatePosted).IsRequired();
             builder.Entity<Post>().HasOne(p => p.Categorie).WithMany().IsRequired();
+            builder.Entity<Post>().HasMany(p => p.Fotos).WithOne().HasForeignKey("PostId").IsRequired();
+
 
             builder.Entity<Gebruiker>().HasKey(g => g.GebruikersId);
             builder.Entity<Gebruiker>().Property(g => g.Gebruikersnaam).HasMaxLength(50).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Voornaam).HasMaxLength(10).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Achternaam).HasMaxLength(20).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Email).IsRequired().HasMaxLength(100);
-           
+            builder.Entity<Gebruiker>().HasMany(g => g.Fotos).WithOne().HasForeignKey("GebruikersId");
             
 
+
+            builder.Entity<Foto>().HasKey(f => f.FotoId);
             builder.Entity<Foto>().Property(f => f.Naam).IsRequired().HasMaxLength(50);
+            builder.Entity<Foto>().Property(f => f.Url).IsRequired();       
 
             builder.Entity<Categorie>().Property(c => c.CategorieNaam).IsRequired().HasMaxLength(25);
 
             builder.Entity<Post>().HasData(
-                new { PostId = 1, Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, CategorieId = 1}
+                new { PostId = 1, Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, CategorieId = 1},
+                new { PostId = 2, Beschrijving = "een lentewandelin", DatePosted = new DateTime(2010, 05, 13), Likes = 200, CategorieId = 2}
                 );
             builder.Entity<Categorie>().HasData(
 
@@ -51,9 +57,10 @@ namespace PicturePerfectAPI.Data
                 new {CategorieId = 2, CategorieNaam = "Lente"}
                 );
             builder.Entity<Foto>().HasData(
-                new { FotoId = 1, Naam = "fiets.jpeg", PostId = 1},
-                new { FotoId = 2, Naam = "lenteboom.jpeg" }
+                new { FotoId = 1, Naam = "fiets.jpeg", Url = "assets/Images/fiets.jpeg", PostId = 1 },
+                new { FotoId = 2, Naam = "lenteboom.jpeg", Url = "assets/Images/lenteboom.jpeg", PostId = 2 }
                 );
+           
             
             
 
