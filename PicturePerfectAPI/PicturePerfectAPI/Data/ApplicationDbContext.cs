@@ -29,7 +29,8 @@ namespace PicturePerfectAPI.Data
             builder.Entity<Post>().Property(p => p.Beschrijving).HasMaxLength(200).IsRequired();
             builder.Entity<Post>().Property(p => p.DatePosted).IsRequired();
             builder.Entity<Post>().HasOne(p => p.Categorie).WithMany().IsRequired();
-            builder.Entity<Post>().HasMany(p => p.Fotos).WithOne().HasForeignKey("PostId").IsRequired();
+            builder.Entity<Post>().HasMany(p => p.Fotos).WithOne().IsRequired();
+            builder.Entity<Post>().HasOne(p => p.Gebruiker).WithMany(g => g.Posts).HasForeignKey(p => p.GebruikerId).IsRequired();
 
 
             builder.Entity<Gebruiker>().HasKey(g => g.GebruikersId);
@@ -37,7 +38,7 @@ namespace PicturePerfectAPI.Data
             builder.Entity<Gebruiker>().Property(g => g.Voornaam).HasMaxLength(10).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Achternaam).HasMaxLength(20).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Email).IsRequired().HasMaxLength(100);
-            builder.Entity<Gebruiker>().HasMany(g => g.Fotos).WithOne().HasForeignKey("GebruikersId");
+            builder.Entity<Gebruiker>().HasMany(g => g.Fotos).WithOne();
             
 
 
@@ -47,19 +48,6 @@ namespace PicturePerfectAPI.Data
 
             builder.Entity<Categorie>().Property(c => c.CategorieNaam).IsRequired().HasMaxLength(25);
 
-            builder.Entity<Post>().HasData(
-                new { PostId = 1, Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, CategorieId = 1},
-                new { PostId = 2, Beschrijving = "een lentewandelin", DatePosted = new DateTime(2010, 05, 13), Likes = 200, CategorieId = 2}
-                );
-            builder.Entity<Categorie>().HasData(
-
-                new {CategorieId = 1, CategorieNaam = "Sport" },
-                new {CategorieId = 2, CategorieNaam = "Lente"}
-                );
-            builder.Entity<Foto>().HasData(
-                new { FotoId = 1, Naam = "fiets.jpg", Url = "assets/Images/fiets.jpg", PostId = 1 },
-                new { FotoId = 2, Naam = "lenteboom.jpg", Url = "assets/Images/lenteboom.jpg", PostId = 2 }
-                );
            
             
             

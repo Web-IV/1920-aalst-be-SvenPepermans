@@ -75,7 +75,9 @@ namespace PicturePerfectAPI.Controllers
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
-            Post postToCreate = new Post() { Beschrijving = post.Beschrijving };
+            Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
+
+            Post postToCreate = new Post() { Beschrijving = post.Beschrijving, Gebruiker = gebruiker };
             foreach (var f in post.Fotos)
                 postToCreate.AddFoto(new Foto(f.Naam));
             _postRepository.Add(postToCreate);

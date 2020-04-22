@@ -17,5 +17,7 @@ namespace PicturePerfectAPI.DTOs
 
         [Required]
         public CategorieDTO Categorie { get; set; }
+
+
     }
 }

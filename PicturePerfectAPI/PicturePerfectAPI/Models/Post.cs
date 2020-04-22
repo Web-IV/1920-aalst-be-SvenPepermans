@@ -17,6 +17,8 @@ namespace PicturePerfectAPI.Models
         [Required]
         public Categorie Categorie { get; set; }
         public int Likes { get; set; }
+        public Gebruiker Gebruiker { get; set; }
+        public int GebruikerId { get; set; }
 
         public Post(string beschrijving, Categorie categorie)
         {

@@ -35,7 +35,29 @@ namespace PicturePerfectAPI.Data
                 await CreateUser(fleur.Gebruikersnaam, fleur.Email, "Fl3ur123!");             
                 _dbContext.SaveChanges();
 
-             
+                //categories
+                var sport = new Categorie() { CategorieNaam = "Sport" };
+                _dbContext.Categories.Add(sport);
+                var lente = new  Categorie() { CategorieNaam = "Lente" };
+                _dbContext.Categories.Add(lente);
+                _dbContext.SaveChanges();
+
+                //posts
+                var fietstocht = new Post() { Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, Categorie = sport, GebruikerId = 1, Fotos = new List<Foto>() };
+                _dbContext.Posts.Add(fietstocht);
+                  var wandeling = new Post() { Beschrijving = "een lentewandelin", DatePosted = new DateTime(2010, 05, 13), Likes = 200, Categorie = lente, GebruikerId = 1, Fotos = new List<Foto>() };
+                _dbContext.Posts.Add(wandeling);
+                _dbContext.SaveChanges();
+
+                //fotos
+                   Foto fietsfoto = new Foto("fietsfoto.jpg");
+                _dbContext.Fotos.Add(fietsfoto);
+                fietstocht.Fotos.Add(fietsfoto);
+                   Foto boomfoto = new Foto("lenteboom.jpg");
+                _dbContext.Fotos.Add(boomfoto);
+                wandeling.Fotos.Add(boomfoto);
+                _dbContext.SaveChanges();
+                    
 
 
 
