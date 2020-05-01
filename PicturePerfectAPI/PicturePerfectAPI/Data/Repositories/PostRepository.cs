@@ -29,7 +29,7 @@ namespace PicturePerfectAPI.Data.Repositories
 
         public IEnumerable<Post> GetAll()
         {
-            return _posts.ToList();
+            return _posts.Include(p => p.Fotos).ToList();
         }
 
         public Post GetBy(int id)
