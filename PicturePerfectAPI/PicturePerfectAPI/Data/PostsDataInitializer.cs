@@ -50,7 +50,7 @@ namespace PicturePerfectAPI.Data
                 _dbContext.SaveChanges();
 
                 //fotos
-                   Foto fietsfoto = new Foto("fietsfoto.jpg");
+                   Foto fietsfoto = new Foto("fiets.jpg");
                 _dbContext.Fotos.Add(fietsfoto);
                 fietstocht.Fotos.Add(fietsfoto);
                    Foto boomfoto = new Foto("lenteboom.jpg");
