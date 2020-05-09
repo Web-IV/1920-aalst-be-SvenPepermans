@@ -24,7 +24,7 @@ namespace PicturePerfectAPI.Controllers
             _fotoRepository = fotoRepository;
             
         }
-        public HttpResponseMessage UploadFotos()
+        public HttpResponseMessage UploadFotos(int postId)
         {
             
             var files = HttpContext.Request.Form.Files;
@@ -50,7 +50,7 @@ namespace PicturePerfectAPI.Controllers
 
                 }
             }
-
+            _fotoRepository.SaveChanges();
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }
