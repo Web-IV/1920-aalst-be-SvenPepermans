@@ -12,7 +12,7 @@ using PicturePerfectAPI.Models;
 namespace PicturePerfectAPI.Controllers
 {
     [ApiConventionType(typeof(DefaultApiConventions))]
-    [Produces("applications/json")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
@@ -26,7 +26,7 @@ namespace PicturePerfectAPI.Controllers
         }
 
         /// <summary>
-        /// Get the gebruiker
+        /// Get the current user
         /// </summary>
         /// <returns>The gebruiker</returns>
         [HttpGet()]
@@ -35,5 +35,26 @@ namespace PicturePerfectAPI.Controllers
             Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
             return new GebruikerDTO(gebruiker);
         }
+
+        
+
+        /// Get: api/Gebruiker/<id>
+        /// <summary>
+        /// Get the User with given id
+        /// </summary>
+        /// <param name="id"> The id of the User that we want to see</param>
+        /// <returns>The gebruiker</returns>
+
+        [HttpGet("{id}")]
+        public ActionResult<Gebruiker> GetGebruikerWithId(int id)
+        {
+            Gebruiker gebruiker = _gebruikerRepository.GetById(id);
+            if (gebruiker == null)
+            {
+                return NotFound();
+            }
+            return gebruiker;
+        }
+
     }
 }

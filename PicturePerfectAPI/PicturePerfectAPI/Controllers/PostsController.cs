@@ -44,7 +44,7 @@ namespace PicturePerfectAPI.Controllers
         /// </summary>
         /// <param name="id"> The id of the post that we want to see</param>
         /// <returns>The post</returns>
-        [AllowAnonymous]
+        
         [HttpGet("{id}")]
         public ActionResult<Post> GetPost(int id)
         {
@@ -72,13 +72,14 @@ namespace PicturePerfectAPI.Controllers
         /// Adds new post
         /// </summary>
         /// <param name="post">The newly created post</param>
-        [AllowAnonymous]
+        
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
             Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
 
-            Post postToCreate = new Post() { Beschrijving = post.Beschrijving, Gebruiker = gebruiker };
+            Post postToCreate = new Post() { Beschrijving = post.Beschrijving, Gebruiker = gebruiker, Categorie = post.CategorieNaam};
+           
             foreach (var f in post.Fotos)
                 postToCreate.AddFoto(new Foto(f.Naam));
             _postRepository.Add(postToCreate);
@@ -112,7 +113,7 @@ namespace PicturePerfectAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>The deleted post if exists</returns>
-        [AllowAnonymous]
+        
         [HttpDelete("{id}")]
         public ActionResult<Post> DeletePost(int id)
         {

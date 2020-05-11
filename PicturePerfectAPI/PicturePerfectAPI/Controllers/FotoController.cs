@@ -53,5 +53,23 @@ namespace PicturePerfectAPI.Controllers
             _fotoRepository.SaveChanges();
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
+
+        // Get: api/Posts/<id>
+        /// <summary>
+        /// Get the post with given id
+        /// </summary>
+        /// <param name="id"> The id of the post that we want to see</param>
+        /// <returns>The post</returns>
+
+        [HttpGet("{id}")]
+        public ActionResult<Foto> GetFoto(int id)
+        {
+            Foto foto = _fotoRepository.GetBy(id);
+            if (foto == null)
+            {
+                return NotFound();
+            }
+            return foto;
+        }
     }
 }

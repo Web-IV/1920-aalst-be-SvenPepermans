@@ -19,9 +19,11 @@ namespace PicturePerfectAPI.Models
         {
           
             Posts = new List<Post>();
+            Fotos = new List<Foto>();
           
         }
 
+       
       
     }
 }

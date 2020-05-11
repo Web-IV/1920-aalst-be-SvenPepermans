@@ -43,9 +43,9 @@ namespace PicturePerfectAPI.Data
                 _dbContext.SaveChanges();
               
                 //posts
-                var fietstocht = new Post() { Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, Categorie = sport, GebruikerId = 1, Fotos = new List<Foto>() };
+                var fietstocht = new Post() { Beschrijving = "Een fietstocht", DatePosted = DateTime.Now, Likes = 10, Categorie = sport.CategorieNaam, GebruikerId = 1, Fotos = new List<Foto>() };
                 _dbContext.Posts.Add(fietstocht);
-                  var wandeling = new Post() { Beschrijving = "een lentewandelin", DatePosted = new DateTime(2010, 05, 13), Likes = 200, Categorie = lente, GebruikerId = 1, Fotos = new List<Foto>() };
+                  var wandeling = new Post() { Beschrijving = "een lentewandelin", DatePosted = new DateTime(2010, 05, 13), Likes = 200, Categorie = lente.CategorieNaam, GebruikerId = 1, Fotos = new List<Foto>() };
                 _dbContext.Posts.Add(wandeling);
                 _dbContext.SaveChanges();
 
@@ -53,10 +53,15 @@ namespace PicturePerfectAPI.Data
                 Foto fietsfoto = new Foto("fiets.jpg");
                 _dbContext.Fotos.Add(fietsfoto);
                 fietstocht.Fotos.Add(fietsfoto);
+                
                 Foto boomfoto = new Foto("lenteboom.jpg");
                 _dbContext.Fotos.Add(boomfoto);
                 wandeling.Fotos.Add(boomfoto);
+                
                 _dbContext.SaveChanges();
+                sven.Fotos.Add(fietsfoto);
+                sven.Fotos.Add(boomfoto);
+
 
 
 

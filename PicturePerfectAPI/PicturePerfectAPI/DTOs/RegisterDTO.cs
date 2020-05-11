@@ -10,7 +10,7 @@ namespace PicturePerfectAPI.DTOs
     {
         [Required]
         [StringLength(50)]
-        public String Gebruikersnaam { get; set; }
+        public String Username { get; set; }
 
         [Required]
         [EmailAddress]
@@ -18,11 +18,11 @@ namespace PicturePerfectAPI.DTOs
 
         [Required]
         [StringLength(50)]
-        public String Voornaam { get; set; }
+        public String Firstname { get; set; }
 
         [Required]
         [StringLength(50)]
-        public String Achternaam { get; set; }
+        public String Lastname { get; set; }
 
         [Required]
         [Compare("Password")]
