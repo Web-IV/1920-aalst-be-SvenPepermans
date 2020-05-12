@@ -78,7 +78,7 @@ namespace PicturePerfectAPI.Controllers
         {
             Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
 
-            Post postToCreate = new Post() { Beschrijving = post.Beschrijving, Gebruiker = gebruiker, Categorie = post.CategorieNaam};
+            Post postToCreate = new Post() { Beschrijving = post.Beschrijving, Gebruiker = gebruiker, CategorieNaam = post.CategorieNaam};
            
             foreach (var f in post.Fotos)
                 postToCreate.AddFoto(new Foto(f.Naam));

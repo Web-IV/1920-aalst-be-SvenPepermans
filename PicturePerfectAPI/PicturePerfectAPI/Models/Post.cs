@@ -15,7 +15,7 @@ namespace PicturePerfectAPI.Models
         [Required]
         public ICollection<Foto> Fotos { get; set; }
         [Required]
-        public string Categorie { get; set; }
+        public string CategorieNaam { get; set; }
         public int Likes { get; set; }
         public Gebruiker Gebruiker { get; set; }
         public int GebruikerId { get; set; }
@@ -24,7 +24,7 @@ namespace PicturePerfectAPI.Models
         {
             DatePosted = DateTime.Now;
             Fotos = new List<Foto>();
-            Categorie = categorie.CategorieNaam;
+            CategorieNaam = categorie.CategorieNaam;
             Likes = 0;
             Beschrijving = beschrijving;
             Gebruiker = new Gebruiker();

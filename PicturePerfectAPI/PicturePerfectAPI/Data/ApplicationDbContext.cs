@@ -29,7 +29,7 @@ namespace PicturePerfectAPI.Data
             builder.Entity<Post>().Property(p => p.Beschrijving).HasMaxLength(200).IsRequired();
             builder.Entity<Post>().Property(p => p.DatePosted).IsRequired();
           //  builder.Entity<Post>().HasOne(p => p.Categorie).WithMany().IsRequired();
-            builder.Entity<Post>().HasMany(p => p.Fotos).WithOne();
+            builder.Entity<Post>().HasMany(p => p.Fotos).WithOne().OnDelete(DeleteBehavior.Cascade);
          //   builder.Entity<Post>().HasOne(p => p.Gebruiker).WithMany(g => g.Posts).HasForeignKey(p => p.GebruikerId).IsRequired();
 
 
