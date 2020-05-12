@@ -20,15 +20,19 @@ namespace PicturePerfectAPI.Models
         public Gebruiker Gebruiker { get; set; }
         public int GebruikerId { get; set; }
 
-        public Post(string beschrijving, Categorie categorie)
+        public Post(string beschrijving, string categorieNaam, Gebruiker gebruiker)
         {
             DatePosted = DateTime.Now;
             Fotos = new List<Foto>();
-            Categorie = categorie.CategorieNaam;
+            Categorie = categorieNaam;
             Likes = 0;
             Beschrijving = beschrijving;
+            Gebruiker = gebruiker;
         }
-        public Post() { }
+        public Post() {
+            Fotos = new List<Foto>();
+            //Gebruiker = new Gebruiker();
+        }
 
         public void AddFoto(Foto foto)
         {

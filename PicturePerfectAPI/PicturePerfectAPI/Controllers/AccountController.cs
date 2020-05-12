@@ -85,7 +85,7 @@ namespace PicturePerfectAPI.Controllers
         /// <summary>
         /// Checks if the username is available
         /// </summary>
-        /// <param name="gebruikersnaam">Username</param>
+        /// <param name="username">Username</param>
         /// <returns>true if username is not registered yet</returns>
         [AllowAnonymous]
         [HttpGet("checkusername")]
