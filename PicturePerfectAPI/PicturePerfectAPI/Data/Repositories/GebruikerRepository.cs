@@ -25,17 +25,17 @@ namespace PicturePerfectAPI.Data.Repositories
 
         public Gebruiker GetBy(string gebruikersnaam)
         {
-            return _gebruikers.Include(g => g.Posts).ThenInclude(g => g.Fotos).SingleOrDefault(c => c.Gebruikersnaam == gebruikersnaam);
+            return _gebruikers.Include(g => g.Fotos).SingleOrDefault(c => c.Gebruikersnaam == gebruikersnaam);
         }
 
         public Gebruiker GetById(int id)
         {
-            return _gebruikers.Include(g => g.Posts).ThenInclude(g => g.Fotos).SingleOrDefault(g => g.GebruikersId == id);
+            return _gebruikers.Include(g => g.Fotos).SingleOrDefault(g => g.GebruikersId == id);
         }
 
         public IEnumerable<Gebruiker> GetAll()
         {
-            return _gebruikers.Include(g => g.Posts).ThenInclude(g => g.Fotos).ToList();
+            return _gebruikers.Include(g => g.Fotos).ToList();
         }
         public void SaveChanges()
         {

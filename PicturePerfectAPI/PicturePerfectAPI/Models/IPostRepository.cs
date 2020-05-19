@@ -10,6 +10,7 @@ namespace PicturePerfectAPI.Models
         IEnumerable<Post> GetAll();
         Post GetBy(int id);
         IEnumerable<Post> GetByDate(DateTime date);
+        IEnumerable<Post> GetByGebruikerId(int id);
         void Add(Post post);
         void Update(Post post);
         void Delete(Post post);

@@ -31,7 +31,7 @@ namespace PicturePerfectAPI.Models
         }
         public Post() {
             Fotos = new List<Foto>();
-            Gebruiker = new Gebruiker();
+           // Gebruiker = new Gebruiker();
         }
 
         public void AddFoto(Foto foto)

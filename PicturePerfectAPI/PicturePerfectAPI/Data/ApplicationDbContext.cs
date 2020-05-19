@@ -30,7 +30,7 @@ namespace PicturePerfectAPI.Data
             builder.Entity<Post>().Property(p => p.DatePosted).IsRequired();
           //  builder.Entity<Post>().HasOne(p => p.Categorie).WithMany().IsRequired();
             builder.Entity<Post>().HasMany(p => p.Fotos).WithOne().OnDelete(DeleteBehavior.Cascade);
-         //   builder.Entity<Post>().HasOne(p => p.Gebruiker).WithMany(g => g.Posts).HasForeignKey(p => p.GebruikerId).IsRequired();
+           builder.Entity<Post>().HasOne(p => p.Gebruiker).WithMany().HasForeignKey(p => p.GebruikerId).IsRequired();
 
 
             builder.Entity<Gebruiker>().HasKey(g => g.GebruikersId);
@@ -39,7 +39,7 @@ namespace PicturePerfectAPI.Data
             builder.Entity<Gebruiker>().Property(g => g.Achternaam).HasMaxLength(20).IsRequired();
             builder.Entity<Gebruiker>().Property(g => g.Email).IsRequired().HasMaxLength(100);
             builder.Entity<Gebruiker>().HasMany(g => g.Fotos).WithOne();
-            builder.Entity<Gebruiker>().HasMany(g => g.Posts).WithOne(p => p.Gebruiker);
+         //   builder.Entity<Gebruiker>().HasMany(g => g.Posts).WithOne(p => p.Gebruiker);
             
 
 

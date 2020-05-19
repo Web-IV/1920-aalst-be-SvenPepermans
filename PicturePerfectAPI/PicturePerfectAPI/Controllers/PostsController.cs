@@ -65,7 +65,8 @@ namespace PicturePerfectAPI.Controllers
         public IEnumerable<Post> GetPostsCurrentUser()
         {
             Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
-            return gebruiker.Posts;
+            IEnumerable<Post> posts = _postRepository.GetByGebruikerId(gebruiker.GebruikersId);
+            return posts;
         }
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace PicturePerfectAPI.Controllers
         {
             if (id != post.PostId)
             {
-                return BadRequest();
+                return BadRequest("Id's don't match");
             }
             _postRepository.Update(post);
             _postRepository.SaveChanges();

@@ -29,17 +29,22 @@ namespace PicturePerfectAPI.Data.Repositories
 
         public IEnumerable<Post> GetAll()
         {
-            return _posts.Include(p => p.Fotos).ToList();
+            return _posts.Include(p => p.Gebruiker).Include(p => p.Fotos).ToList();
+        }
+
+        public IEnumerable<Post> GetByGebruikerId(int id)
+        {
+            return _posts.Where(p => p.GebruikerId == id).Include(p => p.Fotos).ToList();
         }
 
         public Post GetBy(int id)
         {
-            return _posts.SingleOrDefault(p => p.PostId == id);
+            return _posts.Include(p => p.Gebruiker).Include(p => p.Fotos).SingleOrDefault(p => p.PostId == id);
         }
 
         public IEnumerable<Post> GetByDate(DateTime date)
         {
-            return _posts.Where(p => p.DatePosted == date).ToList();
+            return _posts.Where(p => p.DatePosted == date).Include(p => p.Gebruiker).Include(p => p.Fotos).ToList();
         }
 
         public void SaveChanges()
