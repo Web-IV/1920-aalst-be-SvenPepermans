@@ -3,38 +3,39 @@
   <Class Name="PicturePerfectAPI.Models.Foto">
     <Position X="9" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAgAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAABgAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Models\Foto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PicturePerfectAPI.Models.Gebruiker">
     <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAQAgACAIAAAIBAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAQAgACAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Gebruiker.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Posts" />
       <Property Name="Fotos" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="PicturePerfectAPI.Models.Post">
     <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAEAAAAAAAAkAAAAEAACAAAAAAEgAAA=</HashCode>
+      <HashCode>AAKAAAAAAAAAAAEAAAAAAAAgAAAAAAACAAAgAAEgQAA=</HashCode>
       <FileName>Models\Post.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gebruiker" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Fotos" />
-      <Property Name="Categories" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Enum Name="PicturePerfectAPI.Models.Categorie">
-    <Position X="1" Y="0.75" Width="1.5" />
+  <Class Name="PicturePerfectAPI.Models.Categorie">
+    <Position X="6" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAkSAAAAAAAAACAAABAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Models\Categorie.cs</FileName>
     </TypeIdentifier>
-  </Enum>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
