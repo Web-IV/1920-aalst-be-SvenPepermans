@@ -36,7 +36,19 @@ namespace PicturePerfectAPI.Controllers
             return new GebruikerDTO(gebruiker);
         }
 
-        
+        /// <summary>
+        /// Get all the users
+        /// </summary>
+        /// <returns>All the users</returns>
+        [HttpGet("gebruikers")]
+        [AllowAnonymous]
+        public IEnumerable<Gebruiker> GetGebruikers()
+        {
+            IEnumerable<Gebruiker> gebruikers = _gebruikerRepository.GetAll();
+            return gebruikers;
+        }
+
+
 
         /// Get: api/Gebruiker/<id>
         /// <summary>
@@ -55,6 +67,27 @@ namespace PicturePerfectAPI.Controllers
             }
             return gebruiker;
         }
+
+        /// Get: api/Gebruiker/<gebruikersNaam>
+        /// <summary>
+        /// Get the User with given username
+        /// </summary>
+        /// <param name="gebruikersNaam"> The username of the User that we want to see</param>
+        /// <returns>The gebruiker</returns>
+
+        [HttpGet("Name/{gebruikersNaam}")]
+        [AllowAnonymous]
+        public ActionResult<Gebruiker> GetGebruikerWithUserName(string gebruikersNaam)
+        {
+            Gebruiker gebruiker = _gebruikerRepository.GetBy(gebruikersNaam);
+            if (gebruiker == null)
+            {
+                return NotFound();
+            }
+            return gebruiker;
+        }
+
+
 
     }
 }

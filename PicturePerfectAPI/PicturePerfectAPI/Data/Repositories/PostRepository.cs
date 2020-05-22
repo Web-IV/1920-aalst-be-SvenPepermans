@@ -34,7 +34,7 @@ namespace PicturePerfectAPI.Data.Repositories
 
         public IEnumerable<Post> GetByGebruikerId(int id)
         {
-            return _posts.Where(p => p.GebruikerId == id).Include(p => p.Fotos).ToList();
+            return _posts.Where(p => p.GebruikerId == id).Include(p => p.Gebruiker).Include(p => p.Fotos).ToList();
         }
 
         public Post GetBy(int id)
@@ -47,6 +47,15 @@ namespace PicturePerfectAPI.Data.Repositories
             return _posts.Where(p => p.DatePosted == date).Include(p => p.Gebruiker).Include(p => p.Fotos).ToList();
         }
 
+        public IEnumerable<Post> GetPosts(string beschrijving = null, string categorieNaam = null)
+        {
+            var posts = _posts.Include(p => p.Gebruiker).Include(p => p.Fotos).AsQueryable();
+            if (!string.IsNullOrEmpty(beschrijving))
+                posts = posts.Where(p => p.Beschrijving.IndexOf(beschrijving) >= 0);
+            if (!string.IsNullOrEmpty(categorieNaam))
+                posts = posts.Where(p => p.CategorieNaam == categorieNaam);
+            return posts.OrderBy(p => p.DatePosted).ToList();
+        }
         public void SaveChanges()
         {
             _context.SaveChanges();

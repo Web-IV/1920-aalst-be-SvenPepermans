@@ -14,5 +14,8 @@ namespace PicturePerfectAPI.DTOs
         [Required]
         public string Url { get; set; }
 
+        [Required]
+        public string Base64 { get; set; }
+
     }
 }

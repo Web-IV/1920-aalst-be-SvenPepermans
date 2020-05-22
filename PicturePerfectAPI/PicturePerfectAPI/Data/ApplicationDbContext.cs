@@ -45,7 +45,8 @@ namespace PicturePerfectAPI.Data
 
             builder.Entity<Foto>().HasKey(f => f.FotoId);
             builder.Entity<Foto>().Property(f => f.Naam).IsRequired().HasMaxLength(50);
-            builder.Entity<Foto>().Property(f => f.Url).IsRequired();       
+            builder.Entity<Foto>().Property(f => f.Url).IsRequired();
+           // builder.Entity<Foto>().Property(f => f.Base64).IsRequired();
 
             builder.Entity<Categorie>().Property(c => c.CategorieNaam).IsRequired().HasMaxLength(25);
 

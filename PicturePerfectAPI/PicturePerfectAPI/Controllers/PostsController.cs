@@ -31,12 +31,15 @@ namespace PicturePerfectAPI.Controllers
         /// Get all posts ordered by date
         /// </summary>
         /// <returns>Array of posts ordered by date</returns>
-        [AllowAnonymous]
         [HttpGet]
-        public IEnumerable<Post> GetPosts()
+        [AllowAnonymous]
+        public IEnumerable<Post> GetPosts(string beschrijving = null, string categorieNaam = null)
         {
-            return _postRepository.GetAll().OrderBy(p => p.DatePosted);
+            if (string.IsNullOrEmpty(beschrijving) && string.IsNullOrEmpty(categorieNaam))
+                return _postRepository.GetAll();
+            return _postRepository.GetPosts(beschrijving, categorieNaam);
         }
+
 
         // Get: api/Posts/<id>
         /// <summary>
@@ -44,7 +47,7 @@ namespace PicturePerfectAPI.Controllers
         /// </summary>
         /// <param name="id"> The id of the post that we want to see</param>
         /// <returns>The post</returns>
-        
+
         [HttpGet("{id}")]
         public ActionResult<Post> GetPost(int id)
         {
@@ -57,23 +60,24 @@ namespace PicturePerfectAPI.Controllers
         }
 
 
-       /// <summary>
-       /// Gets all the posts of the currently logged in user
-       /// </summary>
-       /// <returns>All the posts of the current user</returns>
-        [HttpGet("Posts")]
-        public IEnumerable<Post> GetPostsCurrentUser()
+        /// Get: api/Posts/<gebruikersId>
+        /// <summary>
+        /// Gets all the posts of the user with given id
+        /// </summary>
+        /// <returns>All the posts of the user with given id</returns>
+        [AllowAnonymous]
+        [HttpGet("Posts/{gebruikersId}")]
+        public IEnumerable<Post> GetPostsFromUser(int gebruikersId)
         {
-            Gebruiker gebruiker = _gebruikerRepository.GetBy(User.Identity.Name);
-            IEnumerable<Post> posts = _postRepository.GetByGebruikerId(gebruiker.GebruikersId);
+            // Gebruiker gebruiker = _gebruikerRepository.GetById(id);
+            IEnumerable<Post> posts = _postRepository.GetByGebruikerId(gebruikersId);
             return posts;
         }
-
         /// <summary>
         /// Adds new post
         /// </summary>
         /// <param name="post">The newly created post</param>
-        
+
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
@@ -102,7 +106,7 @@ namespace PicturePerfectAPI.Controllers
         {
             if (id != post.PostId)
             {
-                return BadRequest("Id's don't match");
+                return BadRequest();
             }
             _postRepository.Update(post);
             _postRepository.SaveChanges();

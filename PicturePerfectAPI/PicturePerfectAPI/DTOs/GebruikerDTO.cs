@@ -8,7 +8,7 @@ namespace PicturePerfectAPI.DTOs
 {
     public class GebruikerDTO
     {
-        public int Id { get; set; }
+        public int GebruikersId { get; set; }
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
         public string Gebruikersnaam { get; set; }
@@ -19,7 +19,7 @@ namespace PicturePerfectAPI.DTOs
 
         public GebruikerDTO(Gebruiker gebruiker) : this()
         {
-            Id = gebruiker.GebruikersId;
+            GebruikersId = gebruiker.GebruikersId;
             Voornaam = gebruiker.Voornaam;
             Achternaam = gebruiker.Achternaam;
             Gebruikersnaam = gebruiker.Gebruikersnaam;
