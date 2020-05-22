@@ -94,17 +94,17 @@ namespace PicturePerfectAPI.Controllers
                 new { id = postToCreate.PostId }, postToCreate);
         }
 
-        // PUT: api/Posts/<id>
+        // PUT: api/Posts/<postId>
         /// <summary>
         /// Updates a post with new information
         /// </summary>
-        /// <param name="id">Id of post to be updated</param>
+        /// <param name="postId">Id of post to be updated</param>
         /// <param name="post">The updated post</param>
         /// <returns></returns>
-        [HttpPut("{id}")]
-        public IActionResult PutPost(int id, Post post)
+        [HttpPut("{postId}")]
+        public IActionResult PutPost(int postId, Post post)
         {
-            if (id != post.PostId)
+            if (postId != post.PostId)
             {
                 return BadRequest();
             }
