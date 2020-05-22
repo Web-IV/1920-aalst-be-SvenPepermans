@@ -31,8 +31,8 @@ namespace PicturePerfectAPI.Controllers
         /// Get all posts ordered by date
         /// </summary>
         /// <returns>Array of posts ordered by date</returns>
-        [HttpGet]
         [AllowAnonymous]
+        [HttpGet]       
         public IEnumerable<Post> GetPosts(string beschrijving = null, string categorieNaam = null)
         {
             if (string.IsNullOrEmpty(beschrijving) && string.IsNullOrEmpty(categorieNaam))

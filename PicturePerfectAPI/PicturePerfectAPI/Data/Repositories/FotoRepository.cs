@@ -27,6 +27,10 @@ namespace PicturePerfectAPI.Data.Repositories
             return _fotos.ToList();
         }
 
+        public Foto GetByNaam(string naam)
+        {
+            return _fotos.FirstOrDefault(f => f.Naam == naam);
+        }
         public Foto GetBy(int id)
         {
             return _fotos.SingleOrDefault(f => f.FotoId == id);

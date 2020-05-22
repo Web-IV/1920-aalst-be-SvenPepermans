@@ -42,7 +42,7 @@ namespace PicturePerfectAPI.Controllers
                         using (var fileStream = new FileStream(Path.Combine(uploadpath, fileName), FileMode.Create))
                         {
                             file.CopyTo(fileStream);
-
+                            fileStream.Close();
                             var foto = new Foto(fileName);
                             _fotoRepository.Add(foto);
                         }
